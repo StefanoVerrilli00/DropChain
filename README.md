@@ -14,9 +14,12 @@ This is a university project made for the 2022 edition of the Tecnologie Web (We
 - [Dependencies](#Dependencies)
 - [Getting started](#getting-started)
   - [Installation](#installation)
+- [Tecnologies](#Tecnologies)
+- [Open Source components](#Open source components)
 
 ### Dependencies
-* Node.js(>11)
+* Node(>16.0.0)
+* npm(>=7.0.0)
 
 ### Getting started
 ## Installation
@@ -34,3 +37,22 @@ then run the application with:
 npm start
 ```
 and connect to your `ipv4` address or the localhost at port 3000 (`http://localhost:3000/`)
+
+## Technologies
+To build this app the following technologies have been used:
+- HTML5
+- CSS3 (Bootstrap)
+- Javascript
+- Node.js
+- Ipfs-core(javascript implementation of IPFS)
+- Express (Packege for routing)
+
+## Open source components
+- ipfs-core([LICENSE](https://github.com/ipfs/js-ipfs/tree/master/packages/ipfs-core#license))
+- Bootstrap ([License](https://github.com/twbs/bootstrap/blob/main/LICENSE))
+- Express([LICENSE](https://github.com/expressjs/express/blob/master/LICENSE))
+- multer([LICENSE](https://github.com/expressjs/multer/blob/master/LICENSE))
+- jquery([LICENSE](https://github.com/jquery/jquery/blob/main/LICENSE.txt))
+- ejs([LICENSE](https://github.com/mde/ejs/blob/main/LICENSE))
+- it(Licensed either under [MIT](https://github.com/achingbrain/it/blob/master/LICENSE-MIT) and [Apache](https://github.com/achingbrain/it/blob/master/LICENSE-APACHE))
+- name2mime([LICENSE](https://github.com/imhashir/name2mime/blob/master/LICENSE))
