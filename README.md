@@ -15,7 +15,7 @@ This is a university project made for the 2022 edition of the Tecnologie Web (We
 - [Getting started](#getting-started)
   - [Installation](#installation)
 - [Tecnologies](#Tecnologies)
-- [Open Source components](#Open source components)
+- [Open Source components](#Open-source-components)
 
 ### Dependencies
 * Node(>16.0.0)
