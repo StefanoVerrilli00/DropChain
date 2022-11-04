@@ -16,8 +16,10 @@ This is a university project made for the 2022 edition of the Tecnologie Web (We
   - [Installation](#installation)
 - [Tecnologies](#Tecnologies)
 - [Open Source components](#Open-source-components)
+- [License](#License)
+- [Author information](#Author-Information)
 
-### Dependencies
+## Dependencies
 * Node(>16.0.0)
 * npm(>=7.0.0)
 
@@ -56,3 +58,15 @@ To build this app the following technologies have been used:
 - ejs([LICENSE](https://github.com/mde/ejs/blob/main/LICENSE))
 - it(Licensed either under [MIT](https://github.com/achingbrain/it/blob/master/LICENSE-MIT) and [Apache](https://github.com/achingbrain/it/blob/master/LICENSE-APACHE))
 - name2mime([LICENSE](https://github.com/imhashir/name2mime/blob/master/LICENSE))
+
+## Assets
+- public/files/logo-ipfs.png owned by [krl](https://github.com/krl) is s licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license.
+- The icons used are owned by [Font-awsome](https://github.com/FortAwesome/Font-Awesome) under [LICENSE](https://github.com/FortAwesome/Font-Awesome/blob/6.x/LICENSE.txt)
+
+## License
+
+Apache 2.0
+
+## Author Information
+
+- Stefano Verrilli [@stefanoVerrilli](https://github.com/StefanoVerrilli00)
