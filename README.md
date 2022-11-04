@@ -25,11 +25,11 @@ Open a terminal and clone this repository from `github` with the following comma
 ```
 git clone https://github.com/StefanoVerrilli00/DropChain.git
 ```
-`cd` into the directory `DropChain` and run the command below to install the dependencies:
+`cd` into the directory `DropChain` and run the command below to install the dependencies (this will take some time):
 ```
 npm install
 ```
-run the application with:
+then run the application with:
 ```
 npm start
 ```
