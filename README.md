@@ -14,6 +14,7 @@ This is a university project made for the 2022 edition of the Tecnologie Web (We
 - [Dependencies](#Dependencies)
 - [Getting started](#getting-started)
   - [Installation](#installation)
+  - [Quit and restart](#Quit-and-restart)
 - [Tecnologies](#Tecnologies)
 - [Open Source components](#Open-source-components)
 - [License](#License)
@@ -23,8 +24,8 @@ This is a university project made for the 2022 edition of the Tecnologie Web (We
 * Node(>16.0.0)
 * npm(>=7.0.0)
 
-### Getting started
-## Installation
+## Getting started
+### Installation
 Open a terminal and clone this repository from `github` with the following command:
 
 ```
@@ -39,6 +40,10 @@ then run the application with:
 npm start
 ```
 and connect to your `ipv4` address or the localhost at port 3000 (`http://localhost:3000/`)
+<p align="center"><img src="public/files/1.svg" width="500" /></p>
+
+### Quit and restart
+To stop the application you just have to press `CTRL-C` on the terminal window. To restart it just run `npm start` in the DropChain directory
 
 ## Technologies
 To build this app the following technologies have been used:
