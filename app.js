@@ -27,6 +27,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.set('views','public/Views');
+app.use(express.static(__dirname + '/public'));
 
 const publicPath = path.join(__dirname,'public/Views');
 app.use(express.static(publicPath));
@@ -43,7 +44,6 @@ app.get('/',(req,res)=>{
 
 
 app.post('/upload',FileUpload.array('file',100),async (req, res) => {
-    console.log(req.files.length);
     if(req.files.length === 0){
         return res.status(400).send({errorMessage: "No file selected"});
     }
@@ -65,7 +65,7 @@ app.post('/upload',FileUpload.array('file',100),async (req, res) => {
 app.get('/downloadPage',async (req,res) =>{
     const CID = req.query.Cid;
     if(isCID(CID)){
-        return res.status(200).render(`SuccessDownload.ejs`,{Cid : CID});
+        return res.render(`SuccessDownload.ejs`,{Cid : CID});
     }else{
         return res.status(404).render(`ErrorDownload.ejs`,{error: "File undefined, please check if the link is correct"});
     }
@@ -73,7 +73,7 @@ app.get('/downloadPage',async (req,res) =>{
 
 
 
-app.get('/download',async(req,res,next) =>{
+app.get('/download',async(req,res) =>{
     const CIDToPass = req.query.cid;
     let files
     try{
@@ -107,7 +107,5 @@ function isCID (hash){
     }
 }
 
-app.listen(3000,function (){
-    console.log("Server listening");
-});
+app.listen(3000);
 

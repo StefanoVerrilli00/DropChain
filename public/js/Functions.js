@@ -31,9 +31,9 @@ const Row = class Row{
 
 
 $(document).ready(function() {
-    var myForm = $('#file-form')
-    var droppedFiles = new DataTransfer();
-    var DefaultText = $('#Count').text();
+    const myForm = $('#file-form');
+    let droppedFiles = new DataTransfer();
+    const DefaultText = $('#Count').text();
     const fileInput = document.getElementById('file');
     const fileButton = $('#fileUploadButton');
     const alert = $('#message');
@@ -52,7 +52,7 @@ $(document).ready(function() {
         .on('drop', function(e) {
             droppedFiles = e.originalEvent.dataTransfer
             fileInput.files = droppedFiles.files;
-            var fileCount = e.originalEvent.dataTransfer.files.length;
+            const fileCount = e.originalEvent.dataTransfer.files.length;
             fileButton.prop('disabled',false);
             if(fileCount === 1){
                 let filename = e.originalEvent.dataTransfer.files[0].name
@@ -67,7 +67,7 @@ $(document).ready(function() {
             e.preventDefault();
             if(myForm.hasClass('uploading')) return false;
             myForm.addClass('uploading').removeClass('error');
-            var formData = new FormData(this);
+            let formData = new FormData(this);
             $.ajax({
                 type: "POST",
                 url: "/upload",
@@ -75,7 +75,7 @@ $(document).ready(function() {
                 processData: false,
                 contentType: false,
                 success: [function (data){
-                    CreateSuccessfullTransaction(data.SIZE,data.CID);
+                    CreateSuccessfullyTransaction(data.SIZE,data.CID);
                     $('#Count').text(`${DefaultText}`);
                     myForm.trigger("reset");
                 }],
@@ -105,6 +105,7 @@ $(document).ready(function() {
         const a = document.createElement("a");
         a.appendChild(document.createTextNode(CID));
         a.href=link;
+        a.target ="_blank"
         NewRow.appendToTitle(a);
         const sizeText = document.createTextNode(`Size: ${size}`);
         NewRow.appendToSubPar(sizeText);
@@ -120,12 +121,10 @@ $(document).ready(function() {
 
     }
 
-    function CreateSuccessfullTransaction(Size,CID){
+    function CreateSuccessfullyTransaction(Size,CID){
         let origin = window.location.origin;
-        console.log(CID);
         let DownloadLink = `${origin}/downloadPage?Cid=${CID}`;
-        let Val2 = Size;
-        CreateSuccessRow(DownloadLink,CID,Val2);
+        CreateSuccessRow(DownloadLink,CID,Size);
     }
 
     function CreateErrorRow(errorData){

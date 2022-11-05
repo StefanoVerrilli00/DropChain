@@ -1,8 +1,7 @@
 $(document).ready(function(){
         let href = $('#retryDownload');
         href.click();
-        let link = href.attr('href');
-        location.href = link;
+        location.href = href.attr('href');
 })
 function Download(CID) {
         const origin = window.location.origin;

@@ -1,4 +1,4 @@
-
+/* ==== General Styles ==== */
 html,
 body {
     height: 100%;
@@ -27,6 +27,11 @@ body {
     text-overflow: ellipsis;
 }
 
+.hide{
+    display: none;
+}
+
+/* ==== File drop Styles ==== */
 .custombutton{
     display: block;
     padding: 8px 16px;
@@ -48,7 +53,6 @@ body {
 }
 
 
-
 .file-drop-area.uploading .fileBox{
     visibility: hidden;
 }
@@ -57,10 +61,6 @@ body {
     display: block;
 }
 
-
-.hide{
-    display: none;
-}
 
 .file-drop-area {
     position: relative;
@@ -86,6 +86,23 @@ body {
 }
 
 
+.filelabel {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+}
+
+.file-select{
+    text-decoration: underline;
+}
+
+.file-select.hovered{
+    color: blue;
+}
+
+/* ==== Alert Styles ==== */
+
 #message {
     position: fixed;
     top: 10px;
@@ -99,7 +116,7 @@ body {
 .alert-fixed{
     width: 30%;
 }
-
+/* ==== Files list styles ==== */
 .overflow-hidden{
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -131,19 +148,4 @@ body {
 .scrollable{
     overflow: auto;
     height: 200px;
-}
-
-.filelabel {
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    text-align: center;
-}
-
-.file-select{
-    text-decoration: underline;
-}
-
-.file-select.hovered{
-    color: blue;
 }
