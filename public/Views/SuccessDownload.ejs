@@ -8,6 +8,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../js/DownloadTrigger.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/main.js"></script>
+    <link rel="manifest" href="../manifest.json" />
+    <meta name="theme-color" content="#317EFB"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
 </head>
 <body>
   <div class="container d-flex justify-content-center align-items-center flex-column">
@@ -15,7 +22,8 @@
         <i class="fa fa-check me-3" style="font-size:48px;color:green"></i>
       <h1>Download will start soon...</h1>
     </div>
-    <p>To retry the download click on the following link: <a href=`#` onclick="Download(`<%=Cid%>`)" id="retryDownload">Download</a></p>
+    <p>To retry the download click on the following link: <a href=`#` id="retryDownload">Download</a></p>
   </div>
+  <script>let CID = <%- JSON.stringify(Cid) %>;</script>
 </body>
 </html>

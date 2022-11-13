@@ -31,6 +31,7 @@ app.use(express.static(__dirname + '/public'));
 
 const publicPath = path.join(__dirname,'public/Views');
 app.use(express.static(publicPath));
+
 const storage = multer.memoryStorage();
 
 const maxSize =50*1024*1024;
@@ -45,17 +46,19 @@ app.get('/',(req,res)=>{
 
 app.post('/upload',FileUpload.array('file',100),async (req, res) => {
     if(req.files.length === 0){
-        return res.status(400).send({errorMessage: "No file selected"});
+        ErrorPageRising(res,400,"No file selected, unable to upload");
     }
     const fileObjectArray = req.files.map((file) =>{
         return {path : file.originalname, content: file.buffer}})
 
     if(fileObjectArray.length > 1){
-        const addedFiles = await all(node.addAll(fileObjectArray,{wrapWithDirectory: true}));
+        const addedFiles = await all(node.addAll(fileObjectArray,{wrapWithDirectory: true}))
+            .catch((e) => {ErrorPageRising(res,e.code,"Error during upload")})
         const directoryCID = addedFiles[addedFiles.length -1].cid;
         res.send({CID:directoryCID.toString(),SIZE:addedFiles[addedFiles.length-1].size});
     }else{
-        const FileToAdd = await node.add(fileObjectArray[0],{wrapWithDirectory:true});
+        const FileToAdd = await node.add(fileObjectArray[0],{wrapWithDirectory:true})
+            .catch((e) => {ErrorPageRising(res,e.code,"Error during upload")});
         res.send({CID:FileToAdd.cid.toString(),SIZE:FileToAdd.size})
     }
 
@@ -67,7 +70,7 @@ app.get('/downloadPage',async (req,res) =>{
     if(isCID(CID)){
         return res.render(`SuccessDownload.ejs`,{Cid : CID});
     }else{
-        return res.status(404).render(`ErrorDownload.ejs`,{error: "File undefined, please check if the link is correct"});
+        ErrorPageRising(res,404,"File undefined, please check if the url is correct");
     }
 })
 
@@ -84,11 +87,13 @@ app.get('/download',async(req,res) =>{
     let isDirectory = files.length > 1;
     let buffer;
     if(isDirectory){
-       buffer = await toBuffer(node.get(CIDToPass.toString(),{compress:true,compressionLevel:1,archive:true}));
+       buffer = await toBuffer(node.get(CIDToPass.toString(),{compress:true,compressionLevel:1,archive:true}))
+           .catch((e) => ErrorPageRising(res,e.code,"Error during fetch of the content"));
        res.setHeader("Content-Type",`application/zip`);
        res.setHeader("Content-Disposition",`attachment; filename=Archive.zip`);
    }else{
-       buffer = await toBuffer(node.cat(files[0].cid.toString()));
+       buffer = await toBuffer(node.cat(files[0].cid.toString()))
+           .catch((e) => ErrorPageRising(res,e.code,"Error during fetch of the content"));
         const ext = getMime(files[0].name.toString()).type
         res.setHeader('Content-Type',ext);
        res.setHeader('Content-Disposition','attachment;filename='+files[0].name.toString())
@@ -105,6 +110,10 @@ function isCID (hash){
     } catch {
         return false
     }
+}
+
+function ErrorPageRising(res,errorCode,errorMessage){
+    return res.status(errorCode).render('ErrorDownload.ejs',{error: errorMessage});
 }
 
 app.listen(3000);

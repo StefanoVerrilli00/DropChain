@@ -1,5 +1,5 @@
 
-const Row = class Row{
+class Row{
     constructor(result) {
         this.li = document.createElement("li");
         this.li.setAttribute("class","list-group-item d-flex justify-content-between align-items-center");
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
 
     function CreateSuccessRow(link,CID,size){
-        const NewRow = new Row(true);
+        let NewRow = new Row(true);
         const a = document.createElement("a");
         a.appendChild(document.createTextNode(CID));
         a.href=link;
@@ -118,7 +118,7 @@ $(document).ready(function() {
         NewRow.appendToRight(buttonNode);
         const li = NewRow.finalizeCreation();
         ul.insertBefore(li,ul.firstChild);
-
+        delete NewRow;
     }
 
     function CreateSuccessfullyTransaction(Size,CID){
@@ -139,7 +139,7 @@ $(document).ready(function() {
 
 
     function fallbackClipboard(text){
-        var textArea = document.createElement("textarea");
+        let textArea = document.createElement("textarea");
         textArea.value = text;
         textArea.style.top = "0";
         textArea.style.left = "0";
