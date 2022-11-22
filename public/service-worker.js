@@ -6,7 +6,8 @@ const assets = [
     "js/DownloadTrigger.js",
     "Views/home.html",
     "Views/ErrorDownload.ejs",
-    "Views/SuccessDownload.ejs"
+    "Views/SuccessDownload.ejs",
+    "css/success-error.css"
 ]
 
 self.addEventListener("install",(e)=>{
